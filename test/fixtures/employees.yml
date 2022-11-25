@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  mutiplex: one
+  position: MyString
+  rol: MyString
+  start_date: 2022-11-25
+  salary: MyString
+
+two:
+  user: two
+  mutiplex: two
+  position: MyString
+  rol: MyString
+  start_date: 2022-11-25
+  salary: MyString

@@ -1,0 +1,2 @@
+class Product < PrimaryRecord
+end
