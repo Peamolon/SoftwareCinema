@@ -1,14 +1,19 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <%= link_to 'LOGO',root_path,class: 'nav-link' %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
+    <%= current_user.id %>
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
       <% if user_signed_in?%>
+        <li class="nav-item active">
+          <% if current_user.is_employee? && current_user.employee.present? %>
+            <%= link_to 'Profile',employee_path(current_user.employee.id),class: 'nav-link' %>
+          <% elsif current_user.is_client? %>
+            <%= link_to 'Profile',client_path(current_user.client.id),class: 'nav-link' %>
+          <% end %>
+        </li>
         <li class="nav-item">
           <%= button_to 'Log out',destroy_user_session_path, method: :delete ,class: 'nav-link' %>
         </li>
