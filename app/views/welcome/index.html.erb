@@ -4,5 +4,10 @@
   </div>
 <% end %>
 
-<h1>Aqui va el index de la pagina</h1>
+<% if @current_user.is_employee? %>
+  <%= render 'welcome/welcome_employee', current_user: @current_user  %>
+<%else %>
+  <%= render 'welcome/welcome_client', current_user: @current_user %>
+<% end %>
+
 
