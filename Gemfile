@@ -11,6 +11,8 @@ gem "sprockets-rails"
 
 gem 'devise'
 
+gem 'tzinfo-data'
+
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 
