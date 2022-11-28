@@ -1,4 +1,4 @@
 class Employee < PrimaryRecord
   belongs_to :user
-  belongs_to :mutiplex
+  has_one :multiplex, class_name: 'Multiplex',foreign_key: "mutiplex_id"
 end

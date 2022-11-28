@@ -1,0 +1,14 @@
+<% flash.each do |type, msg| %>
+  <div class="alert alert-warning">
+    <%= msg %>
+  </div>
+<% end %>
+<h1>New employee</h1>
+
+<%= render "form", employee: @employee, multiplexes: @multiplexes %>
+
+<br>
+
+<div>
+  <%= link_to "Back to employees", employees_path %>
+</div>
