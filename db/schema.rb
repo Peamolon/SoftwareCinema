@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_154709) do
 
   create_table "cinema_places", force: :cascade do |t|
     t.bigint "cinema_id", null: false
-    t.string "type"
+    t.string "cinema_place_type"
     t.string "price"
     t.string "state"
     t.datetime "created_at", null: false
@@ -26,10 +26,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_154709) do
 
   create_table "cinemas", force: :cascade do |t|
     t.string "name"
-    t.bigint "multiplexes_id", null: false
+    t.integer "multiplex_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["multiplexes_id"], name: "index_cinemas_on_multiplexes_id"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -93,7 +92,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_154709) do
 
   create_table "products", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "product_type"
     t.string "detail"
     t.string "price"
     t.datetime "created_at", null: false
@@ -119,7 +118,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_154709) do
   end
 
   add_foreign_key "cinema_places", "cinemas"
-  add_foreign_key "cinemas", "multiplexes", column: "multiplexes_id"
   add_foreign_key "clients", "users"
   add_foreign_key "employees", "users"
   add_foreign_key "points", "clients"
