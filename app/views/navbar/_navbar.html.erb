@@ -4,16 +4,20 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <%= current_user.id %>
     <ul class="navbar-nav">
       <% if user_signed_in?%>
-        <li class="nav-item active">
-          <% if current_user.is_employee? && current_user.employee.present? %>
+        <% if current_user.is_employee? && current_user.employee.present? %>
+          <li class="nav-item active">
             <%= link_to 'Profile',employee_path(current_user.employee.id),class: 'nav-link' %>
-          <% elsif current_user.is_client? %>
+          </li>
+        <% elsif current_user.is_client? %>
+          <li class="nav-item active">
             <%= link_to 'Profile',client_path(current_user.client.id),class: 'nav-link' %>
-          <% end %>
-        </li>
+          </li>
+          <li class="nav-item active">
+            <%= link_to 'Multiplexes',multiplexes_path,class: 'nav-link' %>
+          </li>
+        <% end %>
         <li class="nav-item">
           <%= button_to 'Log out',destroy_user_session_path, method: :delete ,class: 'nav-link' %>
         </li>

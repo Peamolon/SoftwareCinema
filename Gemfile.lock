@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (5.4.0)
+      concurrent-ruby (~> 1.0)
     actioncable (7.0.4)
       actionpack (= 7.0.4)
       activesupport (= 7.0.4)
@@ -102,6 +104,8 @@ GEM
       warden (~> 1.2.3)
     erubi (1.11.0)
     execjs (2.8.1)
+    faker (3.0.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     ffi (1.15.5-x64-mingw-ucrt)
     globalid (1.0.0)
@@ -245,11 +249,13 @@ PLATFORMS
   x86_64-darwin-21
 
 DEPENDENCIES
+  aasm
   bootsnap
   bootstrap
   capybara
   debug
   devise
+  faker
   importmap-rails
   jbuilder
   pg (~> 1.1)

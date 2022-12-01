@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :multiplexes
   resources :employees
   resources :clients
   get 'welcome/index'
