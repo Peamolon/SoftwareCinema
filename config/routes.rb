@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
-  resources :multiplexes
+
+  get 'cinema_place/index'
+  get 'cinema_place/show'
+  get 'cinema_place/new'
+  resources :movies do
+    resources :califications
+  end
+  resources :products
+  resources :multiplexes do
+    resources :cinemas do
+      resources :cinema_place
+      resources :product_orders, except: [:show, :index]
+    end
+  end
+  resources :product_orders, only: [:show, :index]
   resources :employees
   resources :clients
   get 'welcome/index'

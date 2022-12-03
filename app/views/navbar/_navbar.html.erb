@@ -17,6 +17,15 @@
           <li class="nav-item active">
             <%= link_to 'Multiplexes',multiplexes_path,class: 'nav-link' %>
           </li>
+          <li class="nav-item active">
+            <%= link_to 'Movies',movies_path,class: 'nav-link' %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to 'Products',products_path,class: 'nav-link' %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to 'Ordenes',product_orders_path,class: 'nav-link' %>
+          </li>
         <% end %>
         <li class="nav-item">
           <%= button_to 'Log out',destroy_user_session_path, method: :delete ,class: 'nav-link' %>

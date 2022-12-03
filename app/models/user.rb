@@ -6,6 +6,10 @@ class User < PrimaryRecord
   has_one :client
   has_one :employee
 
+  def full_name
+    return "#{name} #{last_name}"
+  end
+
   def has_completed_signed?
     if is_employee?
       return employee.present?

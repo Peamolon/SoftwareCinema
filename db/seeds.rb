@@ -23,10 +23,19 @@ Multiplex.all.each do |multiplex|
   end
 end
 
+#Creating movies
+30.times do
+  name = Faker::Movie.title
+  director = Faker::Name.name
+  year = Faker::Date.between(from: '1950-09-23', to: '2019-09-25')
+  Movie.create(name: name, year: year, director: director)
+end
+
 #Creating cinema places
 Cinema.all.each do |cinema|
   40.times do
-    CinemaPlace.create(cinema_id: cinema.id, cinema_place_type: :general, price: '11000')
+    movie = Movie.all.sample.id
+    CinemaPlace.create(cinema_id: cinema.id, cinema_place_type: :general, price: '11000', movie_id: movie)
   end
 
   20.times do
@@ -40,3 +49,5 @@ products = ['Hot dog', 'Sandwich', 'Nachos', 'Pop Corn', 'Chocolate', 'Soda']
 products.each do |product|
   Product.create(name: product, price: rand(8000..20000))
 end
+
+
