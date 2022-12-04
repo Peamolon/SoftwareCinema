@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-
   get 'cinema_place/index'
   get 'cinema_place/show'
   get 'cinema_place/new'
+  post '/cinema_places/process', to: "cinema_places#process_place", as: 'process_cinema_place'
   resources :movies do
     resources :califications
   end
