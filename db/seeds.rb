@@ -35,7 +35,7 @@ end
 Cinema.all.each do |cinema|
   40.times do
     movie = Movie.all.sample.id
-    CinemaPlace.create(cinema_id: cinema.id, cinema_place_type: :general, price: '11000', movie_id: movie)
+    CinemaPlace.create(cinema_id: cinema.id, cinema_place_type: :general, price: '11000')
   end
 
   20.times do
