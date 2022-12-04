@@ -15,14 +15,6 @@
   Multiplex.create(name: name, address: address)
 end
 
-#Creating Cinemas for each multiplex
-Multiplex.all.each do |multiplex|
-  rand(7..15).times do
-    name = Faker::Artist.name
-    Cinema.create(name: "Cinema #{name}", multiplex_id: multiplex.id)
-  end
-end
-
 #Creating movies
 30.times do
   name = Faker::Movie.title
@@ -31,10 +23,18 @@ end
   Movie.create(name: name, year: year, director: director)
 end
 
+#Creating Cinemas for each multiplex
+Multiplex.all.each do |multiplex|
+  rand(7..15).times do
+    name = Faker::Artist.name
+    movie = Movie.all.sample.id
+    Cinema.create(name: "Cinema #{name}", multiplex_id: multiplex.id, movie_id: movie)
+  end
+end
+
 #Creating cinema places
 Cinema.all.each do |cinema|
   40.times do
-    movie = Movie.all.sample.id
     CinemaPlace.create(cinema_id: cinema.id, cinema_place_type: :general, price: '11000')
   end
 

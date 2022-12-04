@@ -1,6 +1,7 @@
 class CinemaPlace < PrimaryRecord
   include AASM
   belongs_to :cinema
+  has_one :user, foreign_key: "user_id"
 
   aasm column: 'state' do
     state :free, initial: true
@@ -18,6 +19,10 @@ class CinemaPlace < PrimaryRecord
     event :clean do
       transitions from: :busy, to: :free
     end
+  end
+
+  def processing?
+    state == "processing"
   end
 
   def preference?
