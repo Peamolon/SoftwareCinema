@@ -10,6 +10,12 @@
           <li class="nav-item active">
             <%= link_to 'Profile',employee_path(current_user.employee.id),class: 'nav-link' %>
           </li>
+          <li class="nav-item active">
+            <%= link_to 'Reportes peliculas',report_index_path,class: 'nav-link' %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to 'Reporte de puntos',report_points_path	,class: 'nav-link' %>
+          </li>
         <% elsif current_user.is_client? %>
           <li class="nav-item active">
             <%= link_to 'Profile',client_path(current_user.client.id),class: 'nav-link' %>

@@ -50,4 +50,36 @@ products.each do |product|
   Product.create(name: product, price: rand(8000..20000))
 end
 
+#Create multiple Califications
+
+200.times do
+  rate = rand(1..5)
+  comment = Faker::Lorem.sentence(word_count: 3, supplemental: false, random_words_to_add: 4)
+  movie_id = Movie.all.sample.id
+  date = Faker::Time.between(from: 2.years.ago, to: Time.now).to_date
+  Calification.create(rate: rate, date: date, movie_id: movie_id, comment: comment)
+end
+
+#create users
+
+100.times do
+  name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+  telephone = Faker::PhoneNumber.phone_number
+  address = Faker::Address.street_address
+  id_number = Faker::IDNumber.valid
+  email = "#{name}@prueba.com"
+  password = "123456"
+  role = "Client"
+  user = User.create(name: name, last_name:last_name, telephone: telephone, address: address, id_number: id_number, email: email, role: role, password: password)
+  Client.create(user_id: user.id)
+end
+
+300.times do
+  count = rand(1..20) * 5
+  client_id = Client.all.sample.id
+  product_order_id = ProductOrder.first.id
+  Point.create(count: count, client_id: client_id, product_order_id: product_order_id)
+end
+
 
