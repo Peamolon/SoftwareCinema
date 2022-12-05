@@ -1,0 +1,7 @@
+<h1>Grafica de peliculas por calificacion</h1>
+<% @movies.each do |movie| %>
+  <div>
+    <h4>Pelicula <%= movie.name %></h4>
+    <%= pie_chart movie.califications.group("califications.rate").count %>
+  </div>
+<% end %>
