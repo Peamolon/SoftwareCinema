@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'report/index'
   resources :points
   get 'cinema_place/index'
   get 'cinema_place/show'

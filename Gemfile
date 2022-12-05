@@ -29,6 +29,8 @@ gem "cocoon"
 
 gem 'simple_form'
 
+gem "chartkick"
+
 gem 'nested_form'
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
