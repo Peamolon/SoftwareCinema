@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+
+
+<h2>Salas disponibles</h2>
+
+<div id="multiplexes">
+  <table>
+    <tr>
+      <th>Cinema name</th>
+      <th>Movie</th>
+      <th>Available places (general)</th>
+      <th>Available places (Preference)</th>
+      <th></th>
+    </tr>
+    <% @cinemas.each do |cinema| %>
+      <tr>
+        <td><%= cinema.name %></td>
+        <td><%= Movie.find(cinema.movie_id).name %></td>
+        <td><%= cinema.general_places %></td>
+        <td><%= cinema.preference_places %></td>
+        <td><%= button_to "Reservar", multiplex_cinema_product_orders_path(multiplex_id: @mutiplex.id, cinema_id: cinema.id), method: :post %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

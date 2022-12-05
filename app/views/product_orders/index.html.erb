@@ -1,0 +1,8 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Product orders</h1>
+<h2>Deberian ir todas las ordenes</h2>
+
+<% @product_orders.each do |product_order| %>
+  <p>El valor de mi orden id: <%= product_order.id %> es <%= product_order.value %></p>
+<% end %>

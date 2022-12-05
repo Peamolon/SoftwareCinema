@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_04_063234) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_05_012454) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -89,6 +89,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_04_063234) do
     t.string "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "state"
     t.index ["client_id"], name: "index_product_orders_on_client_id"
     t.index ["multiplex_id"], name: "index_product_orders_on_multiplex_id"
   end
@@ -98,6 +99,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_04_063234) do
     t.string "product_type"
     t.string "detail"
     t.string "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.string "state"
+    t.integer "product_order_id"
+    t.integer "cinema_place_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

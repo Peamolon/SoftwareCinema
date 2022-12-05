@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Califications</h1>
+
+<div id="califications">
+  <% @califications.each do |calification| %>
+    <%= render calification %>
+    <p>
+      <%= link_to "Show this calification", calification %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New calification", new_calification_path %>

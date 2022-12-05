@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Peliculas disponibles</h1>
+
+<div id="multiplexes">
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Director</th>
+      <th>Year</th>
+      <th>Calificar</th>
+    </tr>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= link_to "#{movie.id}", movie_path(movie.id) %></td>
+        <td><%= movie.name %></td>
+        <td><%= movie.director %></td>
+        <td><%= movie.year %></td>
+        <td><%= link_to 'calificar', new_movie_calification_path(movie.id) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

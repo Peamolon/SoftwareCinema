@@ -1,0 +1,21 @@
+
+<%= simple_form_for(@calification, url: movie_califications_path, method: :post) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+  </div>
+
+  <div class="form-actions">
+    <div>
+      <%= f.label :rate %>
+      <%= f.select :rate, [1,2,3,4,5] %>
+    </div>
+    <div>
+      <%= f.label :comment %>
+      <%= f.text_area :comment %>
+    </div>
+
+    <%= f.button :submit %>
+  </div>
+<% end %>

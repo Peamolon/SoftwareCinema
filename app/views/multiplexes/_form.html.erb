@@ -1,0 +1,17 @@
+<%= form_with(model: multiplex) do |form| %>
+  <% if multiplex.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(multiplex.errors.count, "error") %> prohibited this multiplex from being saved:</h2>
+
+      <ul>
+        <% multiplex.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

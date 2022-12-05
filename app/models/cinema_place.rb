@@ -1,28 +1,11 @@
 class CinemaPlace < PrimaryRecord
-  include AASM
   belongs_to :cinema
   has_one :user, foreign_key: "user_id"
+  has_many :tickets
 
-  aasm column: 'state' do
-    state :free, initial: true
-    state :processing
-    state :busy
-
-    event :process do
-      transitions from: :free, to: :processing
-    end
-
-    event :complete do
-      transitions from: :processing, to: :busy
-    end
-
-    event :clean do
-      transitions from: :busy, to: :free
-    end
-  end
 
   def processing?
-    state == "processing"
+    tickets.where(state: :processing).present?
   end
 
   def preference?
@@ -30,7 +13,7 @@ class CinemaPlace < PrimaryRecord
   end
 
   def free?
-    state == "free"
+    !tickets.where(state: [:processing, :busy]).present?
   end
 
 end
