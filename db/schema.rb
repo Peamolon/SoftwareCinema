@@ -41,13 +41,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_154709) do
 
   create_table "employees", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.integer "mutiplex_id"
+    t.bigint "mutiplex_id"
     t.string "position"
     t.string "rol"
     t.date "start_date"
     t.string "salary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["mutiplex_id"], name: "index_employees_on_mutiplex_id"
     t.index ["user_id"], name: "index_employees_on_user_id"
   end
 
