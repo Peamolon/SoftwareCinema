@@ -8,8 +8,10 @@
     <div style="width: 300px;">
       <p>Escoge tu puesto</p>
       <p>Los rojos son general y los azules preferencial poner un aviso que lo diferencie</p>
-      <%@cinema_places.each do |cinema_place| %>
-        <button  onclick="process_place(<%= cinema_place.id %>, <%= @product_order.id %>)" disabled="<%= @product_order.paid? ? 'disabled' : '' %>"   class="<%= if cinema_place.processing? then "btn btn-danger" elsif cinema_place.free? then 'btn btn-success' else "btn btn-danger" end %>"></button>
+      <% unless @product_order.paid? %>
+        <%@cinema_places.each do |cinema_place| %>
+          <button  onclick="process_place(<%= cinema_place.id %>, <%= @product_order.id %>)"  class="<%= if cinema_place.processing? then "btn btn-danger" elsif cinema_place.free? then 'btn btn-success' else "btn btn-danger" end %>"></button>
+        <% end %>
       <% end %>
     </div>
     <p>Agrega productos a tu compra</p>
