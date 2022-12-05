@@ -28,7 +28,7 @@ Multiplex.all.each do |multiplex|
   rand(7..15).times do
     name = Faker::Artist.name
     movie = Movie.all.sample.id
-    Cinema.create(name: "Cinema #{name}", multiplex_id: multiplex.id, movie_id: movie)
+    Cinema.create!(name: "Cinema #{name}", multiplex_id: multiplex.id, movie_id: movie)
   end
 end
 
