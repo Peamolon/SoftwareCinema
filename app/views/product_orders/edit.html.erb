@@ -9,7 +9,7 @@
       <p>Escoge tu puesto</p>
       <p>Los rojos son general y los azules preferencial poner un aviso que lo diferencie</p>
       <%@cinema_places.each do |cinema_place| %>
-        <button onclick="process_place(<%= cinema_place.id %>, <%= @product_order.id %>)" class="<%= if cinema_place.processing? then "btn btn-danger" elsif cinema_place.free? then 'btn btn-success' else "btn btn-danger" end %>"></button>
+        <button  onclick="process_place(<%= cinema_place.id %>, <%= @product_order.id %>)" disabled="<%= @product_order.paid? ? 'disabled' : '' %>"   class="<%= if cinema_place.processing? then "btn btn-danger" elsif cinema_place.free? then 'btn btn-success' else "btn btn-danger" end %>"></button>
       <% end %>
     </div>
     <p>Agrega productos a tu compra</p>
@@ -18,10 +18,14 @@
         <%= render "product_orders/product_item", f: p %>
       <% end %>
 
-      <div class="links">
-        <%= link_to_add_association 'Add product', f, :product_items, partial: 'product_orders/product_item' %>
-      </div>
-      <%= f.submit 'Pagar' %>
+      <% if @product_order.state != "paid" %>
+        <div class="links">
+          <%= link_to_add_association 'Add product', f, :product_items, partial: 'product_orders/product_item' %>
+        </div>
+        <%= f.submit 'Pagar' %>
+      <% else %>
+        <p>La orden esta paga</p>
+      <% end %>
     <% end %>
   </div>
 </div>

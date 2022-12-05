@@ -16,6 +16,9 @@ class ProductOrder < PrimaryRecord
     end
   end
 
+  def paid?
+    state == "paid"
+  end
 
   private
 
