@@ -1,0 +1,2 @@
+module CinemaPlaceHelper
+end

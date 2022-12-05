@@ -10,26 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_28_154709) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_05_012454) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cinema_places", force: :cascade do |t|
     t.bigint "cinema_id", null: false
-    t.string "type"
+    t.string "cinema_place_type"
     t.string "price"
     t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["cinema_id"], name: "index_cinema_places_on_cinema_id"
   end
 
   create_table "cinemas", force: :cascade do |t|
     t.string "name"
-    t.bigint "multiplexes_id", null: false
+    t.integer "multiplex_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["multiplexes_id"], name: "index_cinemas_on_multiplexes_id"
+    t.integer "movie_id"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -76,6 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_154709) do
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "product_order_id"
     t.index ["product_id"], name: "index_product_items_on_product_id"
   end
 
@@ -88,15 +90,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_154709) do
     t.string "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "state"
     t.index ["client_id"], name: "index_product_orders_on_client_id"
     t.index ["multiplex_id"], name: "index_product_orders_on_multiplex_id"
   end
 
   create_table "products", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "product_type"
     t.string "detail"
     t.string "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.string "state"
+    t.integer "product_order_id"
+    t.integer "cinema_place_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -120,7 +131,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_154709) do
   end
 
   add_foreign_key "cinema_places", "cinemas"
-  add_foreign_key "cinemas", "multiplexes", column: "multiplexes_id"
   add_foreign_key "clients", "users"
   add_foreign_key "employees", "users"
   add_foreign_key "points", "clients"

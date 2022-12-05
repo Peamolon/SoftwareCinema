@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Aqui deberia ir una tabla con todos los multiplex</h1>
+
+<div id="multiplexes">
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Cinemas number</th>
+    </tr>
+    <% @multiplexes.each do |multiplex| %>
+      <tr>
+        <td><%= link_to "#{multiplex.id}", multiplex_cinemas_path(multiplex.id) %></td>
+        <td><%= multiplex.name %></td>
+        <td><%= multiplex.address %></td>
+        <td><%= multiplex.cinemas_number %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

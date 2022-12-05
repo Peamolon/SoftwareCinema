@@ -1,0 +1,48 @@
+
+<div class="card">
+  <h5 class="card-header">Orden</h5>
+  <div class="card-body">
+    <h5 class="card-title">Detalles</h5>
+    <p class="card-text"><strong>Cliente: </strong><%= @current_user.full_name %></p>
+    <p class="card-text"><strong>Id: </strong> <%= @current_user.id_number %></p>
+    <p class="card-text"><strong>Pelicula: </strong> <%= Movie.find(@cinema.movie_id).name %></p>
+    <div style="width: 300px;">
+      <p>Escoge tu puesto</p>
+      <p>Los rojos son general y los azules preferencial poner un aviso que lo diferencie</p>
+      <%@cinema_places.each do |cinema_place| %>
+        <button onclick="process_place(<%= cinema_place.id %>)" class="<%= if cinema_place.processing? then "btn btn-danger" elsif cinema_place.free? then 'btn btn-success' else "btn btn-danger" end %>"></button>
+      <% end %>
+    </div>
+    <p>Agrega productos a tu compra</p>
+    <%= simple_form_for(@product_order, url: multiplex_cinema_product_orders_path) do |f| %>
+      <%= f.simple_fields_for :product_items do |p| %>
+        <%= render "product_orders/product_item", f: p %>
+      <% end %>
+
+      <div class="links">
+        <%= link_to_add_association 'Add product', f, :product_items, partial: 'product_orders/product_item' %>
+      </div>
+      <%= f.submit 'crear' %>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  function process_place(id){
+      console.log("Asdasdas")
+      let data = {
+          id: id
+      }
+      fetch('/cinema_places/process',{
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+      })
+      window.location.reload();
+  }
+</script>
+
+
+
