@@ -6,7 +6,7 @@
   <div class="form-inputs">
   </div>
 
-  <div class="form-actions">
+  <div  class="form-actions">
     <div>
       <%= f.label :rate %>
       <%= f.select :rate, [1,2,3,4,5] %>
@@ -14,8 +14,9 @@
     <div>
       <%= f.label :comment %>
       <%= f.text_area :comment %>
-    </div>
-
-    <%= f.button :submit %>
+    </div >
+    <button style="color: #0a0909">
+      <%= f.button :submit %>
+    </button>
   </div>
 <% end %>

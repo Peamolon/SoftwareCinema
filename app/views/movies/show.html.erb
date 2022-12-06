@@ -1,8 +1,25 @@
-<p style="color: green"><%= notice %></p>
 
 <%= render @movie %>
 
+<div style="background-color:#1f2122">
 <h1>Calificaciones de la pelicula</h1>
+<h2>Aqui deberian aparecer todas las calificaciones y la info de la pelicula</h2>
+</div>
 
-<h2>Aqui deberian aparecer todas las clificaciones y la info de la pelicula</h2>
+<table class="table table-bordered table-dark">
+  <tr>
+    <th>Id</th>
+    <th>Rate</th>
+    <th>Movie</th>
+    <th>Date</th>
+  </tr>
+  <% @calification.each do |calification| %>
+    <tr>
+      <td><%= calification.id %></td>
+      <td><%= calification.rate %></td>
+      <td><%= Movie.find(calification.movie_id).name %></td>
+      <td><%= calification.date %></td>
+    </tr>
+  <% end %>
+</table>
 
