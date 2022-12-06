@@ -1,8 +1,22 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Product orders</h1>
-<h2>Deberian ir todas las ordenes</h2>
-
-<% @product_orders.each do |product_order| %>
-  <p>El valor de mi orden id: <%= product_order.id %> es <%= product_order.value %></p>
-<% end %>
+<div style="background-color:#1f2122">
+  <table class="table table-bordered table-dark">
+    <tr>
+      <th>Id</th>
+      <th>multiplex Id</th>
+      <th>Client Id</th>
+      <th>Date</th>
+      <th>value</th>
+      <th>state</th>
+    </tr>
+    <% @product_orders.each do |product_order| %>
+      <tr>
+        <td><%= product_order.id %></td>
+        <td><%= product_order.multiplex_id %></td>
+        <td><%= product_order.client_id %></td>
+        <td><%= product_order.date %></td>
+        <td><%= product_order.value %></td>
+        <td><%= product_order.state %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

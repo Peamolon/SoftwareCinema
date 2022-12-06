@@ -1,8 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<div style="background-color:#1f2122">
+  <table class="table table-bordered table-dark">
+    <tr>
+      <th>Count</th>
+      <th>Order Id</th>
+      <th>State</th>
+    </tr>
+    <% @points.each do |point| %>
+      <tr>
+        <td><%= point.count %></td>
+        <td><%= point.product_order_id %></td>
+        <td><%= point.state %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
 
-<h1>Mis puntos</h1>
-
-<% @points.each do |point| %>
-  <p>Tienes: <%= point.count %></p>
-<% end %>
 

@@ -1,4 +1,4 @@
-<body id=login>
+<body id=signup>
 <div class="container">
   <div class="row">
     <div class="col-lg-10 col-xl-9 mx-auto">
@@ -41,9 +41,11 @@
               <%= f.label :telephone %><br/>
             </div>
 
-            <div class="form-floating mb-3">
-              <%= f.select :role, ['Employee', 'Client'], autofocus: true,  class: "form-control"%><br />
+            <div class="form-control form-floating mb-3">
+              <%= f.select :role, ['Employee', 'Client']%><br />
+              <%f.label :role %>
             </div>
+
 
             <div class="form-floating mb-3">
 
@@ -73,4 +75,14 @@
 </div>
 </body>
 
+<style>
+    select {
+        border: 1px solid #fff;
+        background-color: rgba(255,255,255,.5);
+        padding: 5px;
+        width: 330px;
+        border:0px;
+        outline:0px;
+    }
+</style>
 <%= render "devise/shared/links" %>

@@ -1,3 +1,17 @@
-<p style="color: green"><%= notice %></p>
+<div style="background-color:#1f2122">
+  <table class="table table-bordered table-dark">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>price</th>
+    </tr>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
 
-<h1>Deberia haber una lista de los productos disponibles</h1>
