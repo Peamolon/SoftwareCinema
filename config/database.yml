@@ -101,3 +101,8 @@ production:
   database: CinemaProject_production
   username: CinemaProject
   password: <%= ENV["CINEMAPROJECT_DATABASE_PASSWORD"] %>
+
+  primary_replica:
+    <<: *default
+    database: SoftwareCinemaReplica
+    replica: true
