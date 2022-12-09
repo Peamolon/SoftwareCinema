@@ -104,5 +104,7 @@ production:
 
   primary_replica:
     <<: *default
+    username: talntxdq
+    password: LYEEJEtRBJd-aCzz-hQ4WcsnGPtuKCeY
     database: SoftwareCinemaReplica
     replica: true
